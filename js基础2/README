@@ -1,0 +1,19 @@
+1.
+cd **              进入相应文件目录（目标目录外一层）设置这个目录是管理目录
+git init            将文件添加至仓库（将文件放入编辑区）
+//git status	    （红色：编辑区）
+2.
+//git add .	     (全部文件放入暂存区)
+git add **	                    （将某文件放入暂存区）
+//git status	    （绿色：暂存区）
+3.
+git commit -m "****"    （备注）
+4.
+//git branch -d **        （删除分支）
+git branch  **               （创建分支）
+git checkout **             （切换分支）
+5.
+//git remote rm origin      	        （移除之前连接仓库）
+git remote add origin   http://......    （连接仓库）
+6.
+git push  origin   **(分支名称)
