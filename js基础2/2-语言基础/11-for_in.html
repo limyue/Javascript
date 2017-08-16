@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<h3>for...in对象操作语句</h3>
+<pre style="font-size: 18px">
+(1)
+	var arr = [1,2,3];
+	for(var i=0 in arr){
+		console.log(arr[i])
+	}
+
+(2)
+	var obj = {
+		name : 'xiaoming',
+		age : 20,
+		like : 'playGames'
+	}
+	for(var i in obj){
+		console.log(i)		//name age like
+		console.log(obj[i]) //xiaoming 20 playGames
+	}
+
+	<h3>label:
+			statement</h3>
+
+
+	var itemsPassed = 0;
+	var i, j;
+	top:	//label:top
+	for (i = 0; i < items.length; i++){
+	    for (j = 0; j < tests.length; j++)
+	        if (!tests[j].pass(items[i]))
+	            continue top;
+	        itemsPassed++;
+	}
+</pre>
+<h3>for...of 语句</h3>
+<pre style="font-size: 18px;">
+	让对象属性的值递回取得，而不是作用于它们的名字
+
+	let arr1 = [10, 20, 30];
+	for (let value of arr1) {
+	  value += 1;
+	  console.log(value);//11 21 31
+	}
+</pre>
+
+
+
+	<script>
+		var arr = [1,2,3];
+		for(var i=0 in arr){
+			console.log(arr[i])
+		}
+
+
+
+		var obj = {
+			name : 'xiaoming',
+			age : 20,
+			like : 'playGames'
+		}
+		for(var i in obj){
+			console.log(i)		//name age like
+			console.log(obj[i]) //xiaoming 20 playGames
+		}
+		
+
+		let iterable = [10, 20, 30];
+		for (let value of iterable) {
+		  value += 1;
+		  console.log(value); //11 21 31
+		}
+	</script>
+</body>
+</html>

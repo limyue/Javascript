@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<pre style="font-size: 18px;">
+	<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise"></a>
+	从 ECMAScript 6 开始，JavaScript 增加了对 Promise 对象的支持，它允许你对延时和异步操作流进行控制。
+
+	Promise 对象有以下几种状态:
+	pending (进行中): 初始的状态，即正在执行，不处于 fulfilled 或 rejected 状态。
+	fulfilled (已完成): 成功的完成了操作。
+	rejected (已失败): 失败，没有完成操作。
+	settled (已解决): Promise 处于 fulfilled 或 rejected 二者中的任意一个状态, 不会是 pending
+
+	Promise 对象用于一个异步操作的最终完成（或失败）及其结果值的表示。(简单点说就是处理异步请求。。我们经常会做些承诺，如果我赢了你就嫁给我，如果输了我就嫁给你之类的诺言。这就是promise的中文含义。一个诺言，一个成功，一个失败。)
+
+	Promise是一种形式
+	JS是单线程的,Promise则扮演了一个“先知”的角色.你无需等待最终结果出来，你可以继续你现在的生活,没有等待、异步这种感觉的
+
+	</pre>
+	<script>
+var myFirstPromise = new Promise(function(resolve, reject){
+    //当异步代码执行成功时，我们才会调用resolve(...), 当异步代码失败时就会调用reject(...)
+    //在本例中，我们使用setTimeout(...)来模拟异步代码，实际编码时可能是XHR请求或是HTML5的一些API方法.
+    setTimeout(function(){
+        resolve("代码执行成功!"); //代码正常执行！
+    }, 250);
+});
+
+myFirstPromise.then(function(successMessage){
+    //successMessage的值是上面调用resolve(...)方法传入的值.
+    //successMessage参数不一定非要是字符串类型，这里只是举个例子
+    console.log("successMessage Yay! " + successMessage);
+});
+
+
+//----------------------------------------------------------------------
+'use strict';	//未成功
+var promiseCount = 0;
+
+function testPromise() {
+    var thisPromiseCount = ++promiseCount;
+
+    var log = document.getElementById('log');
+    log.insertAdjacentHTML('beforeend', thisPromiseCount +
+        ') Started (<small>Sync code started</small>)<br/>');
+
+    // 新建一个Promise对象
+    var p1 = new Promise(
+        function(resolve, reject) {
+            log.insertAdjacentHTML('beforeend', thisPromiseCount +
+                ') Promise started (<small>Async code started</small>)<br/>');
+            // 模拟异步代码
+            window.setTimeout(
+                function() {
+                    // 填充（fulfilled））promise
+                    resolve(thisPromiseCount);
+                }, Math.random() * 2000 + 1000);
+        }
+    );
+
+    // 通过调用then方法，我们定义了当promise被成功解析（resolved）/填充（fulfilled）时要执行的代码,
+    // 而catch()方法则定义了当promise被拒绝（rejected）时要执行的代码.
+    p1.then(
+        // 记录被填充的值
+        function(val) {
+            log.insertAdjacentHTML('beforeend', val +
+                ') Promise fulfilled (<small>Async code terminated</small>)<br/>');
+        })
+    .catch(
+        // 记录被拒绝的理由（异常信息）
+        function(reason) {
+            console.log('Handle rejected promise ('+reason+') here.');
+        });
+
+    log.insertAdjacentHTML('beforeend', thisPromiseCount +
+        ') Promise made (<small>Sync code terminated</small>)<br/>');
+}
+//----------------------------------------------------------------------
+
+// 男神的各项参数
+var NanShen = {
+    "身高": 180,
+    "体重": 80,
+    "年薪": "200K",
+    request: function(obj) {
+        // 成功与否随机决定
+        // 执行成功的概率为80%
+        if (Math.random() > 0.2) {
+            obj.success();
+        } else {
+            obj.error();
+        }
+    }
+};
+
+var Request = function(name) {
+    return new Promise(function(resolve, reject) {
+        var failed = 0, request = function() {            
+            NanShen.request({
+                name: name,
+                success: function() {
+                    console.log(name + "攻略成功！");
+                    failed = 0;
+                    resolve();
+                },
+                error: function() {
+                    if (failed == 0) {
+                        console.log("第一次攻略" + name + "失败，重试一次！");
+                        failed = 1;
+                        // 重新攻略一次
+                        request();                       
+                    } else {
+                        console.log("依然没有拿下" + name + "，求婚失败！");
+                        reject();
+                    }
+                }
+            });
+        };
+		
+        request();
+    });
+};
+
+Request("岳父")                                // 搞定岳父，然后...
+.then(function() { return Request("大伯"); })  // 搞定大伯，然后...
+.then(function() { return Request("大姑"); })  // 搞定大姑，然后...
+.then(function() {                            // 长辈们全部KO后，攻略女神
+    NanShen.request({
+        name: "女神",
+        success: function() {
+            console.log("女神同意，求婚成功！");
+        },
+        error: function() {
+            console.log("女神不同意，求婚失败！");
+        }
+    });
+});
+	</script>
+</body>
+</html>

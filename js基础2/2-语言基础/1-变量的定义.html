@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>变量</title>
+</head>
+<body>
+<h3>变量的命名</h3>
+<pre style="font-size: 18px">
+	一个 JavaScript 标识符必须以字母、下划线（_）或者美元符号（$）开头；后续的字符也可以是数字（0-9）。因为 JavaScript 语言是区分大小写的，这里所指的字母可以是“A”到“Z”（大写的）和“a”到“z”（小写的）。
+</pre>
+<h3>声明变量3种方式</h3>
+<pre style="font-size: 18px">
+	1.使用关键词var.  var x = 42。这个语法可以用来声明局部变量和全局变量。
+	2.直接赋值。x = 42。这样就会声明了一个全局变量并会在严格模式下产生一个 ReferenceError。声明变量时不应该用这种方式。
+	3.使用关键词 let。例如 let y = 13。这个语法可以用来声明块作用域的局部变量(block scope local variable)。
+</pre>
+<h3>变量求值</h3>
+<pre style="font-size: 18px">
+	console.log(x);//undefined
+	var x;			
+	//声明局部变量和全局变量（es6为解决声明前被调用问题使用let定义局部变量）
+	console.log(x);//undefined
+	console.log(y);//Uncaught ReferenceError: y is not defined
+
+	console.log(x1);//Uncaught ReferenceError: x1 is not defined
+	let x1;			//声明的是块作用域的局部变量
+	console.log(x1);//undefined
+	console.log(y1)//Uncaught ReferenceError: y1 is not defined	
+
+使用 undefined 来判断变量是否已赋值:
+	//(1)
+	var unde;
+	if(unde === undefined){
+		console.log('未被赋值')
+	}else{
+		console.log('已被赋值')
+	}
+
+	//(2)数组判断是否被赋值
+	var arr = [1,2];
+	if(!arr[0]){
+		console.log('未被赋值')
+	}else{
+		console.log('已被赋值')
+	}
+
+	//（3）数值类型环境中 undefined 值会被转换为 NaN。
+	var num;
+	console.log(num+2)
+
+	//(4)null
+	var nu = null;
+	console.log(typeof(nu));//object
+	console.log(nu*4)
+</pre>
+<h3>变量的作用域</h3>
+<pre style="font-size: 18px">
+	if (true) {var x = 5;}  //var声明的是全局变量
+	if (true) {let y = 5;}  //let是在 语句块中声明灯的 局部变量
+</pre>
+<h3>变量的提升</h3>
+<pre style="font-size: 18px">
+	var变量声明提升，一个函数中所有的var语句应尽可能地放在接近函数顶部的地方。这将大大提升程序代码的清晰度。
+		console.log(a);
+		var a = 100;
+	  变量提升：
+		var a;
+		console.log(a);
+		a = 100;
+
+	在 ECMAScript 2015 中，let（const）将不会提升变量到代码块的顶部。因此，在变量声明之前引用这个变量，将抛出错误ReferenceError。这个变量将从代码块一开始的时候就处在一个“暂时性死区”，直到这个变量被声明为止。
+</pre>
+<h3>常量(Constants)</h3>
+<pre style="font-size: 18px">
+	常量不可以通过赋值改变其值，也不可以在脚本运行时重新声明。它必须被初始化为某个值。
+	常量的作用域规则与let块级作用域变量相同。若省略const关键字，则该标识符将被视为变量。
+</pre>
+<hr>
+<pre style="font-size: 18px">
+
+	变量定义：var =Variables
+
+	1.定义变量
+	var a;
+	a = 100;
+	console.log(a);		//100
+
+	var b = 200;
+	console.log(b);		//200
+
+	b = 300;
+	console.log(b);		//300
+
+	2.变量的数据类型
+	字符串、数字、布尔、数组、对象、Null、Undefined
+
+	var a1 = "hello";
+	var a2 = 'hello';
+
+	var b1 = 12;
+	var b2 = 12.0;
+	var b3 = 12e2;
+
+	var c1 = true;
+	var c2 = false;
+
+	var arr = [1,2,3]
+
+	var obj = {
+		name : 'limyue',
+		age : 22
+	}
+
+	var d = null;
+
+	var e;
+
+	3.运算符
+
+	+/连接
+	减，乘，除，求余
+	赋值运算符
+	比较运算符
+	逻辑运算符
+
+	var a = 'hello';
+	var b = 'world';
+	console.log('a+b='+a+' '+b);
+
+
+	var a = 10;
+	var b = 20;
+	console.log('a='+a+'; b='+b)
+	console.log('a+b='+a+b+'  \'+\'表示连接');
+	console.log('a-b='+a-b);
+	console.log('a*b='+a*b);
+	console.log('a/b='+a/b);
+	console.log('a%b='+a%b);
+	console.log('a++'+a++);
+	console.log('a--='+a--);
+
+	//赋值运算符
+	var a = 100;
+	var b;
+	b = a;console.log(b);
+	b += a;console.log(b);
+	b -= a;console.log(b);
+	b *= a;console.log(b);
+	b /= a;console.log(b);
+	b %= a;console.log(b);
+
+	//比较运算符
+	var a = 20;
+	var b = 40;
+	var c ;
+	c= a>b;console.log(c);
+	c= a>=b;console.log(c);
+	c= a<b;console.log(c);
+	c= a<=b;console.log(c);
+	c= a==b;console.log(c);
+	c= a===b;console.log(c);
+	c= a!=b;console.log(c);
+
+	//逻辑运算符&& || !
+	var a = 10;
+	var b;
+	b = (a>5 && a<20);
+	c = (a<5 || a<20);
+	d = !(a<5 || a<20);
+	console.log(b)
+	console.log(c)
+	console.log(d)
+
+	
+</pre>
+	<script>
+		// console.log(x);//undefined
+		// var x;
+		// console.log(x);//undefined
+		// console.log(y);//Uncaught ReferenceError: y is not defined
+
+		//console.log(x1);//Uncaught ReferenceError: x1 is not defined
+		// let x1;
+		// console.log(x1);//undefined
+		// console.log(y1)//Uncaught ReferenceError: y1 is not defined
+
+	//使用 undefined 来判断变量是否已赋值
+		//(1)
+		// var unde;
+		// if(unde === undefined){
+		// 	console.log('未被赋值')
+		// }else{
+		// 	console.log('已被赋值')
+		// }
+
+		//(2)数组判断是否被赋值
+		var arr = [1,2];
+		if(!arr[0]){
+			console.log('未被赋值')
+		}else{
+			console.log('已被赋值')
+		}
+
+		//（3）数值类型环境中 undefined 值会被转换为 NaN。
+		var num;
+		console.log(num+2)
+
+		//(4)null
+		var nu = null;
+		console.log(typeof(nu));//object
+		console.log(nu*4)
+	</script>
+	<script src="main.js"></script>
+
+</body>
+</html>

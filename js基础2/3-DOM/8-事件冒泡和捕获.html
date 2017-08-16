@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.box1{width: 300px;height: 300px;background-color: yellow}
+		.box2{width: 200px;height: 200px;background-color: blue}
+		.box3{width: 100px;height: 100px;background-color: pink}
+	</style>
+</head>
+<body>
+<h3>冒泡和捕捉解释</h3>
+<pre style="font-size: 18px;">
+当一个事件被触发一个元素的父元素，现代浏览器运行两个不同的阶段 - 捕获阶段和冒泡阶段。
+
+在捕获阶段：
+	浏览器检查元素的最外层的祖先（html）是否onclick在捕获阶段中注册了一个事件处理程序，如果是则运行它.
+	然后它移动到内部的下一个元素，做同样的事情，然后是下一个元素，依此类推，直到它到达实际点击的元素。
+
+在冒泡阶段，恰恰相反的发生：
+	浏览器检查实际点击的元素onclick是否在冒泡阶段中注册了一个事件处理程序，如果是，则运行它。
+	然后它移动到下一个直接的祖先元素，并做同样的事情，然后下一个，等等，直到它到达html元素。
+
+		var Box1 = document.querySelector('.box1'); 
+		var Box2 = document.querySelector('.box2'); 
+		var Box3 = document.querySelector('.box3'); 
+	 	var p = document.querySelector('p'); 
+		//冒泡事件（简单来说就是点击子元素会触发父元素的事件）
+		function box1(){console.log('box1被触发');p.textContent += 'box1被触发';}
+		function box2(){console.log('box2被触发');p.textContent += 'box2被触发';}
+		function box3(){console.log('box3被触发');p.textContent += 'box3被触发';}
+
+		Box1.addEventListener('click',box1); //点击box1触发box1
+		Box2.addEventListener('click',box2); //点击box2触发box1 box2
+		Box3.addEventListener('click',box3); //点击box2触发box1 box2 box3
+
+现代浏览器中，默认情况下，所有事件处理程序都在冒泡阶段进行注册.
+为了解决这个烦人的问题，我们用 e.stopPropagation();阻止冒泡
+
+
+		var Box1 = document.querySelector('.box1'); 
+		var Box2 = document.querySelector('.box2'); 
+		var Box3 = document.querySelector('.box3'); 
+	 	var p = document.querySelector('p'); 
+		//冒泡事件（简单来说就是点击子元素会触发父元素的事件）
+		function box1(){console.log('box1被触发');p.textContent += 'box1被触发';}
+		function box2(){console.log('box2被触发');p.textContent += 'box2被触发';}
+		function box3(){console.log('box3被触发');p.textContent += 'box3被触发';}
+
+		Box1.addEventListener('click',box1);
+		// Box2.addEventListener('click',box2);
+		// Box3.addEventListener('click',box3);
+		Box2.onclick = function(e) {
+		  e.stopPropagation();	//阻止冒泡
+		  box2();
+		};
+		Box3.onclick = function(e) {
+		  e.stopPropagation();
+		  box3();
+		};
+	</pre>
+	<div class="box1">1
+		<div class="box2">2
+			<div class="box3">3
+				
+			</div>
+		</div>
+	</div>
+	<p></p>
+
+	<script>
+		var Box1 = document.querySelector('.box1'); 
+		var Box2 = document.querySelector('.box2'); 
+		var Box3 = document.querySelector('.box3'); 
+	 	var p = document.querySelector('p'); 
+		//冒泡事件（简单来说就是点击子元素会触发父元素的事件）
+		function box1(){console.log('box1被触发');p.textContent += 'box1被触发';}
+		function box2(){console.log('box2被触发');p.textContent += 'box2被触发';}
+		function box3(){console.log('box3被触发');p.textContent += 'box3被触发';}
+		Box1.addEventListener('click',box1);
+		// Box2.addEventListener('click',box2);
+		// Box3.addEventListener('click',box3);
+		Box2.onclick = function(e) {
+		  e.stopPropagation();
+		  box2();
+		};
+		Box3.onclick = function(e) {
+		  e.stopPropagation();
+		  box3();
+		};
+		
+	</script>
+</body>
+</html>

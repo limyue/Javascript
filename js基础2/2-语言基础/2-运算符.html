@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>变量</title>
+</head>
+<body>
+	<pre style="font-size: 18px">
+//解构赋值：能从数组或对象对应的数组结构或对象字面量里提取数据的 Javascript 表达式。
+var foo = ["one", "two", "three"];
+
+// 不使用解构
+var one   = foo[0];
+var two   = foo[1];
+var three = foo[2];
+
+// 使用解构
+var [one, two, three] = foo;
+
+
+//一元操作运算符
+//https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Expressions_and_Operators
+	<hr>
+		3.运算符
+
+		+/连接
+		减，乘，除，求余
+		赋值运算符
+		比较运算符
+		逻辑运算符
+
+		var a = 'hello';
+		var b = 'world';
+		console.log('a+b='+a+' '+b);
+
+
+		var a = 10;
+		var b = 20;
+		console.log('a='+a+'; b='+b)
+		console.log('a+b='+a+b+'  \'+\'表示连接');
+		console.log('a-b='+a-b);
+		console.log('a*b='+a*b);
+		console.log('a/b='+a/b);
+		console.log('a%b='+a%b);
+		console.log('a++'+a++);
+		console.log('a--='+a--);
+
+		//赋值运算符
+		var a = 100;
+		var b;
+		b = a;console.log(b);
+		b += a;console.log(b);
+		b -= a;console.log(b);
+		b *= a;console.log(b);
+		b /= a;console.log(b);
+		b %= a;console.log(b);
+
+		//比较运算符
+		var a = 20;
+		var b = 40;
+		var c ;
+		c= a>b;console.log(c);
+		c= a>=b;console.log(c);
+		c= a<b;console.log(c);
+		c= a<=b;console.log(c);
+		c= a==b;console.log(c);
+		c= a===b;console.log(c);
+		c= a!=b;console.log(c);
+
+		//逻辑运算符&& || !
+		var a = 10;
+		var b;
+		b = (a>5 && a<20);
+		c = (a<5 || a<20);
+		d = !(a<5 || a<20);
+		console.log(b)
+		console.log(c)
+		console.log(d)
+
+		
+	</pre>
+	<script src="main.js"></script>
+	<script>
+//解构赋值：能从数组或对象对应的数组结构或对象字面量里提取数据的 Javascript 表达式。
+var foo = ["one", "two", "three"];
+
+// 不使用解构
+var one   = foo[0];
+var two   = foo[1];
+var three = foo[2];
+
+// 使用解构
+var [one, two, three] = foo;
+
+
+//一元操作运算符
+//https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Expressions_and_Operators
+
+	</script>
+</body>
+</html>

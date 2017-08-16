@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<!-- <h1>点击我</h1> -->
+	<h2></h2>
+	<img style="width:100px;height:100px" src="images/1.jpg" alt="图片1">
+	<p>点击上方图片</p>
+	<input type="button" value="这是按钮,点击变成文本"><br/><br/>
+	<button>change user</button>
+	<h1 class="btnH1"></h1>
+	<hr>
+	<pre style="font-size: 22px;">
+	var H1 = document.querySelector('h1');
+	var H2 = document.querySelector('h2');
+	H1.onclick = function(){
+		H2.innerHTML = '你好啊！'
+
+	}
+<hr>
+	//图片转换器
+	//getAttribute(属性)
+	//setAttribute（属性，属性值）
+	var Img = document.querySelector('img')
+	Img.onclick = function(){
+		var Src = Img.getAttribute('src');
+		if(Src === 'images/1.jpg'){
+			Img.setAttribute('src','images/2.jpg') ;
+		}else{
+			Img.setAttribute('src','images/1.jpg') ;
+		}
+	}
+<hr>
+	var Input = document.querySelector('input');
+	Input.onclick = function(){
+		var InputType = Input.getAttribute('type');
+		var InputValue = Input.getAttribute('value');
+		Input.setAttribute('type','text') ;
+		Input.setAttribute('value','这是文本');
+	}
+
+
+<hr>
+//	可存储在浏览器的名字
+//prompt() 
+//localStorage.setItem(key,value)
+//localStorage.getItem(key)
+
+var myButton = document.querySelector('button');
+var btnH1 = document.querySelector('h1');
+//setUserName()函数
+function setUserName() {
+	//弹出框（与alert不同的是，这个弹出框可以输入）
+	//将输入的内容 赋值 给变量myName
+  var myName = prompt('Please enter your name.');
+ 	 //localStorage.setItem(键，值);
+  	 //接受一个键名和值作为参数，将会把键名添加到存储中，
+  	 //如果键名已存在，则更新其对应的值。
+  localStorage.setItem('name', myName);
+  btnH1.innerHTML = '你好啊！ ' + myName;
+}
+
+//检查 name 数据是否存在
+if(!localStorage.getItem('name')) {
+		//如果不存在，执行setUserName
+  setUserName();
+} else {
+		//如果存在
+		//localStorage.getItem(key):获取指定key本地存储的值
+  var storedName = localStorage.getItem('name');
+  btnH1.innerHTML = '你好啊！' + storedName;
+}
+
+//点击按钮执行setUserName函数
+myButton.onclick = function() {
+  setUserName();
+}
+<hr>
+//点击按钮改变背景颜色	
+var html = document.querySelector('html')
+var btn = document.createElement('button')
+btn.textContent = '点击按钮改变背景颜色';
+html.appendChild(btn);
+function changeColor(){
+	//document.write('ok')
+	 var rndCol = 'rgb(' + random(255) + ',' + random(255) + ',' + random(255) + ')';
+  document.body.style.backgroundColor = rndCol;
+	function random(number){
+		// var bg = Math.random()*number;(错误的)
+		return Math.floor(Math.random()*(number+1));
+		return bg;
+	}
+}
+btn.onclick = changeColor;
+	</pre>
+	<script>
+
+// Personalized welcome message code
+var myButton = document.querySelector('button');
+var btnH1 = document.querySelector('h1');
+//setUserName()函数
+function setUserName() {
+	//弹出框（与alert不同的是，这个弹出框可以输入）
+	//将输入的内容 赋值 给变量myName
+  var myName = prompt('Please enter your name.');
+  //localStorage.setItem(键，值);
+  //接受一个键名和值作为参数，将会把键名添加到存储中，
+  //如果键名已存在，则更新其对应的值。
+  localStorage.setItem('name', myName);
+  btnH1.innerHTML = '你好啊！ ' + myName;
+}
+
+//检查 name 数据是否存在
+if(!localStorage.getItem('name')) {
+	//如果不存在，执行setUserName
+  setUserName();
+} else {
+	//如果存在
+	//localStorage.getItem(key):获取指定key本地存储的值
+  var storedName = localStorage.getItem('name');
+  btnH1.innerHTML = '你好啊！' + storedName;
+}
+
+//点击按钮执行setUserName函数
+myButton.onclick = function() {
+  setUserName();
+}
+
+
+
+		//点击事件
+		var H1 = document.querySelector('h1');
+		var H2 = document.querySelector('h2');
+		H1.onclick = function(){
+			H2.innerHTML = '你好啊！'
+
+		}
+
+		//图片转换器
+		//getAttribute(属性)
+		//setAttribute（属性，属性值）
+		var Img = document.querySelector('img')
+		Img.onclick = function(){
+			var Src = Img.getAttribute('src');
+			if(Src === 'images/1.jpg'){
+				Img.setAttribute('src','images/2.jpg') ;
+			}else{
+				Img.setAttribute('src','images/1.jpg') ;
+			}
+		}
+
+		var Input = document.querySelector('input');
+		Input.onclick = function(){
+			var InputType = Input.getAttribute('type');
+			var InputValue = Input.getAttribute('value');
+			Input.setAttribute('type','text') ;
+			Input.setAttribute('value','这是文本');
+			
+
+		}
+//点击按钮改变背景颜色	
+var html = document.querySelector('html')
+var btn = document.createElement('button')
+btn.textContent = '点击按钮改变背景颜色';
+html.appendChild(btn);
+function changeColor(){
+	//document.write('ok')
+	 var rndCol = 'rgb(' + random(255) + ',' + random(255) + ',' + random(255) + ')';
+  document.body.style.backgroundColor = rndCol;
+	function random(number){
+		// var bg = Math.random()*number;(错误的)
+		return Math.floor(Math.random()*(number+1));
+		return bg;
+	}
+}
+btn.onclick = changeColor;
+
+	</script>
+</body>
+</html>

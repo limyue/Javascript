@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<form action="">
+		<div>
+			<label for="username">用户名</label><br>
+			<input type="text" id="username" class="username">
+		</div>
+		<div>
+			<label for="password">密码</label><br>
+			<input type="password" id="password" class="password">
+		</div>
+		<input type="submit" class="submit">	
+	</form>
+	<p></p>
+	<h4>
+	function demo(e){
+		e.preventDefault()//阻止事件发生
+	}
+	
+	</h4>
+	<pre style="font-size: 18px">
+	var form = document.querySelector('form');
+	var username = document.querySelector('.username');
+	var password = document.querySelector('.password');
+	var submit = document.querySelector('.submit');
+	var p = document.querySelector('p');
+
+	form.addEventListener('submit',sub);
+	function sub(e){
+		if(username.value === '' || password.value === ''){
+			//阻止事件发生
+			e.preventDefault();
+			p.textContent = '请输入正确的用户名和密码'
+		}
+	}
+	</pre>
+
+	<script>
+		var form = document.querySelector('form');
+		var username = document.querySelector('.username');
+		var password = document.querySelector('.password');
+		var submit = document.querySelector('.submit');
+		var p = document.querySelector('p');
+
+		form.addEventListener('submit',sub);
+		function sub(e){
+			if(username.value === '' || password.value === ''){
+				//阻止事件发生
+				e.preventDefault();
+				p.textContent = '请输入正确的用户名和密码'
+			}
+		}
+
+	</script>
+</body>
+</html>

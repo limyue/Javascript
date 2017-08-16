@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<button>点击按钮登陆</button><br>
+	<button>在网页下方出现世界1</button><br>
+	<button>在网页下方出现世界2</button><br>
+	<button>在网页下方出现世界3</button><br>
+	<button>在网页下方出现世界4</button><br>
+	<h4></h4>
+
+	<p>点击输入姓名</p>
+	<pre style = "font-size: 22px;">
+		var btn = document.querySelector('button');
+
+//（1）可正确输出
+		// btn.onclick = function(){
+		// 	document.write('我是一号')
+		// 	document.write('我是二号')
+		// 	document.write('我是三号')
+		// }
+
+//（2）只能输出三号
+		// btn.onclick = function(){document.write('我是一号')}
+		// btn.onclick = function(){document.write('我是二号')}
+		// btn.onclick = function(){document.write('我是三号')}
+
+//（3）只输出了一号
+		// btn.addEventListener('click',demo1,false) 
+		// btn.addEventListener('click',demo2,false) 
+		// btn.addEventListener('click',demo3,false) 
+		// function demo1(){document.write('我是一号')}
+		// function demo2(){document.write('我是2号')}
+		// function demo3(){document.write('我是3号')}
+
+//填写玩家姓名
+//addEventListener()
+//textContent 改变p标签内容
+var P = document.querySelector('p');
+P.addEventListener('click', updateName);
+
+function updateName() {
+  var name = prompt('Enter a new name');
+  P.textContent = '玩家 ' + name;
+}		
+<hr>
+//删除事件处理程序代码，如果需要，removeEventListener()
+//改变背景颜色
+var html = document.querySelector('html')
+var btn = document.createElement('button')
+btn.textContent = '点击按钮改变背景颜色';
+html.appendChild(btn);
+function changeColor(){
+	//document.write('ok')
+	 var rndCol = 'rgb(' + random(255) + ',' + random(255) + ',' + random(255) + ')';
+  document.body.style.backgroundColor = rndCol;
+	function random(number){
+		// var bg = Math.random()*number;(错误的)
+		return Math.floor(Math.random()*(number+1));
+		return bg;
+	}
+}
+btn.addEventListener('click',changeColor);
+	</pre>
+	<script>
+		var btn = document.querySelector('button');
+
+//（1）可正确输出
+		// btn.onclick = function(){
+		// 	document.write('我是一号')
+		// 	document.write('我是二号')
+		// 	document.write('我是三号')
+		// }
+
+//（2）只能输出三号
+		// btn.onclick = function(){document.write('我是一号')}
+		// btn.onclick = function(){document.write('我是二号')}
+		// btn.onclick = function(){document.write('我是三号')}
+
+//（3）只输出了一号
+		// btn.addEventListener('click',demo1,false) 
+		// btn.addEventListener('click',demo2,false) 
+		// btn.addEventListener('click',demo3,false) 
+		// function demo1(){document.write('我是一号')}
+		// function demo2(){document.write('我是2号')}
+		// function demo3(){document.write('我是3号')}
+
+		var P = document.querySelector('p');
+		P.addEventListener('click', updateName);
+
+		function updateName() {
+		  var name = prompt('Enter a new name');
+		  P.textContent = '玩家 ' + name;
+		}
+
+
+//点击按钮后在body最后添加创建的p标签
+var btns = document.querySelectorAll('button')
+
+function hello(){
+	var P = document.createElement('p');
+	P.textContent = '世界'
+	document.body.appendChild(P);
+}
+
+for(var i=0 ; i<btns.length ; i++){
+	btns[i].addEventListener('click',hello)
+}
+
+//改变背景颜色
+var html = document.querySelector('html')
+var btn = document.createElement('button')
+btn.textContent = '点击按钮改变背景颜色';
+html.appendChild(btn);
+function changeColor(){
+	//document.write('ok')
+	 var rndCol = 'rgb(' + random(255) + ',' + random(255) + ',' + random(255) + ')';
+  document.body.style.backgroundColor = rndCol;
+	function random(number){
+		// var bg = Math.random()*number;(错误的)
+		return Math.floor(Math.random()*(number+1));
+		return bg;
+	}
+}
+btn.addEventListener('click',changeColor);
+	</script>
+
+</body>
+</html>

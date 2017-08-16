@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<pre style="font-size: 25px">
+		JavaScript 中的所有事物都是对象
+		字符串，数字，布尔，数组，对象，null,undefind
+
+		JavaScript 允许自定义对象
+		*对象只是带有属性和方法的特殊数据类型
+
+		*JavaScript 基于 prototype
+		*JavaScript for...in 语句循环遍历对象的属性。
+
+		关键字"this"指向了当前代码运行时的对象
+		它保证了当代码的上下文(context)改变时变量的值的正确性
+
+		//创建js对象
+		var person = new Object();
+		//对象的属性
+		person.name = 'xiaoming';
+		person.age = 22;
+		console.log(person);
+
+		//使用函数来定义对象，然后创建新的对象
+		var person1 = {
+			name : 'xiaohua',
+			age : 18
+		}
+		console.log(person1)
+
+
+		//使用对象构造器
+		function person2(name,age){
+			this.name = 'xiaoyu';
+			this.age = '20';
+		}
+		console.log(person2)
+
+		//for..in循环遍历对象的属性。
+		var x;
+		var txt = '';
+		var person4={fname:"Bill",lname:"Gates",age:56}; 
+		for (x in person4)
+		{
+		txt=txt + person4[x];
+		}
+		console.log(txt)
+
+	</pre>
+	<script>
+		//创建js对象
+		var person = new Object();
+		//对象的属性
+		person.name = 'xiaoming';
+		person.age = 22;
+		console.log(person);
+
+		//使用函数来定义对象，然后创建新的对象
+		var person1 = {
+			name : 'xiaohua',
+			age : 18
+		}
+		console.log(person1)
+
+
+		//使用对象构造器
+		function person2(name,age){
+			this.name = 'xiaoyu';
+			this.age = '20';
+		}
+		console.log(person2)
+
+		//实例
+		// function person3(name,age,like){
+		// 	this.name = name;
+		// 	this.age = age;
+		// 	this.like = like;
+		// }
+		// var a = person3('limyue','22','apple');
+		// console.log(a)
+
+		//for..in循环遍历对象的属性。
+		var x;
+		var txt = '';
+		var person4={fname:"Bill",lname:"Gates",age:56}; 
+		for (x in person4)
+		{
+		txt=txt + person4[x];
+		}
+		console.log(txt)
+	</script>
+</body>
+</html>

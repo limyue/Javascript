@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<pre style="font-size: 25px">
+	javascript数字  64位（8比特）
+	整数（不使用小数点或指数计数法）最多为 15 位。
+	小数的最大位数是 17，但是浮点运算并不总是 100% 准确
+
+	属性：
+	MAX VALUE	最大的数
+	MIN VALUE	最小的数
+	NEGATIVE INFINITIVE	负无穷大，溢出时返回该值
+	POSITIVE INFINITIVE 正无穷大，溢出时返回该值
+	NaN			非数字
+	prototype   有能力向对象添加属性和方法。
+	constructor 返回对创建此对象的 Number 函数的引用。
+	方法：
+	toExponential() 把对象的值转换为指数计数法。
+	toFixed()       把数字转换为字符串，结果的小数点后有指定位数的数字。
+	toPrecision()   把数字格式化为指定的长度。
+	toString() 		把数字转换为字符串，使用本地数字格式顺序
+	valueOf() 		返回一个 Number 对象的基本数字值
+<hr>
+	// 	MAX_VALUE	最大的数
+	document.write('Number.MAX_VALUE='+Number.MAX_VALUE);
+	
+	// MIN_VALUE	最小的数
+	document.write('Number.MIN_VALUE='+Number.MIN_VALUE);
+	
+	// NEGATIVE INFINITIVE	负无穷大，溢出时返回该值
+	// POSITIVE INFINITIVE 正无穷大，溢出时返回该值
+	// NaN			指示某个值是否是数字
+	var a = 'a';
+	document.write('\'a\'是数字吗？'+a)
+	
+	// prototype   有能力向对象添加属性和方法。
+	// constructor 返回对创建此对象的 Number 函数的引用。
+	var Num = new Number();
+	if(Num.constructor == Number){
+		document.write('这是Number对象')
+	}
+	
+	// 方法：
+	// toExponential() 把对象的值转换为指数计数法。
+	var num = new Number(10000);
+	document.write (num.toExponential(2))
+	
+	// toFixed()       把数字转换为字符串，结果的小数点后有指定位数的数字。
+	// toPrecision()   把数字格式化为指定的长度。
+	var num = new Number(10000);
+	document.write (num.toPrecision(10))
+	
+	// toString() 		把数字转换为字符串，使用本地数字格式顺序
+	var a = 12;
+	var b = 12;
+	document.write('未转换成数字')
+	document.write('a+b='+a+b)
+	
+	var a1 = toString(a)
+	var b1 = toString(b)
+	document.write('转换成数字')
+	document.write('a1+b1='+a1+b1)
+	
+	// valueOf() 		返回一个 Number 对象的基本数字值
+	var c = 120;
+	document.write(c.valueOf())
+	
+	var d = c+10;
+	document.write(d)
+	
+<hr>
+	</pre>
+	<script>
+	// 	MAX_VALUE	最大的数
+	document.write('Number.MAX_VALUE='+Number.MAX_VALUE);
+	document.write('<br>')
+	// MIN_VALUE	最小的数
+	document.write('Number.MIN_VALUE='+Number.MIN_VALUE);
+	document.write('<br>')
+	// NEGATIVE INFINITIVE	负无穷大，溢出时返回该值
+	// POSITIVE INFINITIVE 正无穷大，溢出时返回该值
+	// NaN			指示某个值是否是数字
+	var a = 'a';
+	document.write('\'a\'是数字吗？'+a)
+	document.write('<br>')
+	// prototype   有能力向对象添加属性和方法。
+	// constructor 返回对创建此对象的 Number 函数的引用。
+	var Num = new Number();
+	if(Num.constructor == Number){
+		document.write('这是Number对象')
+	}
+	document.write('<br>')
+	// 方法：
+	// toExponential() 把对象的值转换为指数计数法。
+	var num = new Number(10000);
+	document.write (num.toExponential(2))
+	document.write('<br>')
+	// toFixed()       把数字转换为字符串，结果的小数点后有指定位数的数字。
+	// toPrecision()   把数字格式化为指定的长度。
+	var num = new Number(10000);
+	document.write (num.toPrecision(10))
+	document.write('<br>')
+	// toString() 		把数字转换为字符串，使用本地数字格式顺序
+	var a = 12;
+	var b = 12;
+	document.write('未转换成数字')
+	document.write('a+b='+a+b)
+	document.write('<br>')
+	var a1 = toString(a)
+	var b1 = toString(b)
+	document.write('转换成数字')
+	document.write('a1+b1='+a1+b1)
+	document.write('<br>')
+	// valueOf() 		返回一个 Number 对象的基本数字值
+	var c = 120;
+	document.write(c.valueOf())
+	document.write('<br>')
+	var d = c+10;
+	document.write(d)
+	document.write('<br>')
+	</script>
+</body>
+</html>

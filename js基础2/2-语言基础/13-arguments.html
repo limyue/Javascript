@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<pre style="font-size: 18px;">
+		function myConcat(separator) {
+		   var result = "" ;
+		   //arguments.length获得传入参数的个数
+		   for (i = 1; i < arguments.length; i++) {
+		   		//输出所有参数
+		      result += arguments[i] + separator;
+		   }
+		   return result;
+		}
+
+		// returns "red, orange, blue, "
+		console.log(myConcat(", ", "red", "orange", "blue"));
+
+		// returns "elephant; giraffe; lion; cheetah; "
+		console.log(myConcat("; ", "elephant", "giraffe", "lion", "cheetah"));
+
+		// returns "sage. basil. oregano. pepper. parsley. "
+		console.log(myConcat(". ", "sage", "basil", "oregano", "pepper", "parsley"));
+
+
+
+//arguments 对象泄露情况及解决办法
+
+		//不可以return arguments.
+		// function getArgs() {
+		//     return arguments;
+		// }
+
+		//直接将argument的值复制给常量，也算泄露
+		// function getArgs() {
+		//     const args = [].slice.call(arguments);
+		//     return args;
+		// }
+
+		// 将argument的值复制给常量，返回时无论怎样都是泄露
+		// function getArgs() {
+		//     const args = arguments;
+		//     return function() {
+		//         return args;
+		//     };
+		// }
+		//将函数的 arguments 对象泄露出去了，最终的结果就是 V8 引擎将会跳过优化，导致相当大的性能损失。
+		//解决办法如下：
+		function getArgs() {
+		    const args = new Array(arguments.length);
+		    for(let i = 0; i < args.length; ++i) {
+		        args[i] = arguments[i];
+		    }
+		    return args;
+		}
+
+
+
+//在严格模式下，函数中的参数与 arguments 对象没有联系，修改一个值不会改变另一个值。而在非严格模式下，两个会互相影响。
+function foo(a) {
+    "use strict";//严格模式(浏览器支持es6才可以)
+    console.log(a, arguments[0]);//1 1
+    a = 10;
+    console.log(a, arguments[0]);//10 1
+    arguments[0] = 20;
+    console.log(a, arguments[0]);//10 20
+}
+console.log(foo(1));
+
+function foo(a) {//非严格模式
+    console.log(a, arguments[0]);//1 1
+    a = 10;
+    console.log(a, arguments[0]);//10 10
+    arguments[0] = 20;
+    console.log(a, arguments[0]);//20 20
+}
+console.log(foo(1));
+
+
+</pre>
+	<script>
+		function myConcat(separator) {
+		   var result = "" ;
+		   //arguments.length获得传入参数的个数
+		   for (i = 1; i < arguments.length; i++) {
+		   		//输出所有参数
+		      result += arguments[i] + separator;
+		   }
+		   return result;
+		}
+
+		// returns "red, orange, blue, "
+		console.log(myConcat(", ", "red", "orange", "blue"));
+
+		// returns "elephant; giraffe; lion; cheetah; "
+		console.log(myConcat("; ", "elephant", "giraffe", "lion", "cheetah"));
+
+		// returns "sage. basil. oregano. pepper. parsley. "
+		console.log(myConcat(". ", "sage", "basil", "oregano", "pepper", "parsley"));
+
+
+
+//arguments 对象泄露情况及解决办法
+
+		//不可以return arguments.
+		// function getArgs() {
+		//     return arguments;
+		// }
+
+		//直接将argument的值复制给常量，也算泄露
+		// function getArgs() {
+		//     const args = [].slice.call(arguments);
+		//     return args;
+		// }
+
+		// 将argument的值复制给常量，返回时无论怎样都是泄露
+		// function getArgs() {
+		//     const args = arguments;
+		//     return function() {
+		//         return args;
+		//     };
+		// }
+		//将函数的 arguments 对象泄露出去了，最终的结果就是 V8 引擎将会跳过优化，导致相当大的性能损失。
+		//解决办法如下：
+		function getArgs() {
+		    const args = new Array(arguments.length);
+		    for(let i = 0; i < args.length; ++i) {
+		        args[i] = arguments[i];
+		    }
+		    return args;
+		}
+
+
+
+//在严格模式下，函数中的参数与 arguments 对象没有联系，修改一个值不会改变另一个值。而在非严格模式下，两个会互相影响。
+function foo(a) {
+    "use strict";//严格模式(浏览器支持es6才可以)
+    console.log(a, arguments[0]);//1 1
+    a = 10;
+    console.log(a, arguments[0]);//10 1
+    arguments[0] = 20;
+    console.log(a, arguments[0]);//10 20
+}
+console.log(foo(1));
+
+function foo(a) {//非严格模式
+    console.log(a, arguments[0]);//1 1
+    a = 10;
+    console.log(a, arguments[0]);//10 10
+    arguments[0] = 20;
+    console.log(a, arguments[0]);//20 20
+}
+console.log(foo(1));
+
+
+
+
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Useful event target example</title>
+    <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    /*创建的div css设置*/
+      div {
+        /*background-color: red;*/
+        height: 200px;
+        width: 25%;
+        float: left;
+      }
+    </style>
+  </head>
+  <body>
+  <pre style="font-size: 18px;">
+   //创建16块地板砖
+      for(var i = 1; i <= 16; i++) {
+        var myDiv = document.createElement('div');
+        document.body.appendChild(myDiv);
+      }
+      //创建随机整数
+      function random(number) {
+        return Math.floor(Math.random()*(number+1));
+      }
+      //随机颜色
+      function bgChange() {
+        var rndCol = 'rgb(' + random(255) + ',' + random(255) + ',' + random(255) + ')';
+        return rndCol;
+      }
+      
+      var divs = document.querySelectorAll('div');
+      //当点击到16块地板砖任意一个时，变换颜色
+      for(var i = 0; i < divs.length; i++) {
+        divs[i].onclick = function(e) {
+          e.target.style.backgroundColor = bgChange();
+        }
+      }
+      <hr>  
+  </pre>
+  <h3>请点击下方空白处</h3>
+  <hr>
+    <script>
+    //创建16块地板砖
+      for(var i = 1; i <= 16; i++) {
+        var myDiv = document.createElement('div');
+        document.body.appendChild(myDiv);
+      }
+      //创建随机整数
+      function random(number) {
+        return Math.floor(Math.random()*(number+1));
+      }
+      //随机颜色
+      function bgChange() {
+        var rndCol = 'rgb(' + random(255) + ',' + random(255) + ',' + random(255) + ')';
+        return rndCol;
+      }
+      
+      var divs = document.querySelectorAll('div');
+      //当点击到16块地板砖任意一个时，变换颜色
+      for(var i = 0; i < divs.length; i++) {
+        divs[i].onclick = function(e) {
+          e.target.style.backgroundColor = bgChange();
+        }
+      }
+    </script>
+  </body>
+</html>

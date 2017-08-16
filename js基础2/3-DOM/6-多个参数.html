@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Function stage 4</title>
+    <style>
+      .msgBox {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        width: 242px;
+        border-radius: 10px;
+        background-color: #eee;
+        background-image: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.1));
+      }
+      .msgBox p {
+        line-height: 1.5;
+        padding: 10px 20px;
+        color: #333;
+        padding-left: 82px;
+        background-position: 25px center;
+        background-repeat: no-repeat;
+      }
+      .msgBox button {
+        background: none;
+        border: none;
+        position: absolute;
+        top: 0;
+        right: 0;
+        font-size: 1.1rem;
+        color: #aaa;
+      }
+    </style>
+  </head>
+  <body>
+    <button>点击我</button>
+
+    <script>
+      var btn = document.querySelector('button');
+      btn.onclick = function() {
+        //传入的参数（msgText,msgType）
+        displayMessage('你好','warning');
+      };
+      function displayMessage(msgText,msgType) {
+        var html = document.querySelector('html');
+        //创建一个class=msgBox的div
+        var panel = document.createElement('div');
+        panel.setAttribute('class','msgBox');
+        html.appendChild(panel);
+        //在panel下创建一个p标签
+        var msg = document.createElement('p');
+        msg.textContent = msgText;
+        panel.appendChild(msg);
+        //在panel下创建x（右上角点击删除的）
+        var closeBtn = document.createElement('button');
+        closeBtn.textContent = 'x';
+        panel.appendChild(closeBtn);
+        //点击x ，删除panel
+        closeBtn.onclick = function() {
+          panel.parentNode.removeChild(panel);
+        }
+        //根据msgType的值，显示不同背景
+        if(msgType === 'warning') {
+          panel.style.backgroundColor = 'red';
+        } else if(msgType === 'chat') {
+          panel.style.backgroundColor = 'aqua';
+        } else {
+           panel.style.backgroundColor = 'yellow';
+        }
+      }
+    </script>
+    <pre style="font-size: 18px;">
+var btn = document.querySelector('button');
+      btn.onclick = function() {
+        //传入的参数（msgText,msgType）
+        displayMessage('你好','warning');
+      };
+      function displayMessage(msgText,msgType) {
+        var html = document.querySelector('html');
+        //创建一个class=msgBox的div
+        var panel = document.createElement('div');
+        panel.setAttribute('class','msgBox');
+        html.appendChild(panel);
+        //在panel下创建一个p标签
+        var msg = document.createElement('p');
+        msg.textContent = msgText;
+        panel.appendChild(msg);
+        //在panel下创建x（右上角点击删除的）
+        var closeBtn = document.createElement('button');
+        closeBtn.textContent = 'x';
+        panel.appendChild(closeBtn);
+        //点击x ，删除panel
+        closeBtn.onclick = function() {
+          panel.parentNode.removeChild(panel);
+        }
+        //根据msgType的值，显示不同背景
+        if(msgType === 'warning') {
+          panel.style.backgroundColor = 'red';
+        } else if(msgType === 'chat') {
+          panel.style.backgroundColor = 'aqua';
+        } else {
+           panel.style.backgroundColor = 'yellow';
+        }
+      }
+    </pre>
+  </body>
+</html>

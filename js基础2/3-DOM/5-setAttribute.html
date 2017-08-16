@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<h3>setAttribute为box添加属性</h3>
+<h4>实现功能：添加节点；点击按钮删除节点</h4>
+	<pre style="font-size: 22px;">
+	//图片转换器
+	//getAttribute(属性)
+	//setAttribute（属性，属性值）
+	var Img = document.querySelector('img')
+	Img.onclick = function(){
+		var Src = Img.getAttribute('src');
+		if(Src === 'images/1.jpg'){
+			Img.setAttribute('src','images/2.jpg') ;
+		}else{
+			Img.setAttribute('src','images/1.jpg') ;
+		}
+	}
+	<hr>
+function myFun(){
+			var html = document.querySelector('html');
+
+		//1.创建块元素
+			var Box = document.createElement('div');
+			//setAttribute为box添加属性
+			Box.setAttribute('class','box');
+			html.appendChild(Box);
+			Box.textContent = 'box';
+		//2.创建p元素
+			var prep = document.createElement('p');
+			prep.textContent = '你好';
+			html.appendChild(prep);
+		//3.创建button
+			var btn = document.createElement('button');
+			btn.textContent = 'x';
+			html.appendChild(btn);
+
+		//点击事件parentNode.removeChild
+			btn.onclick = function(){
+				prep.parentNode.removeChild(prep);
+			}	
+
+		
+		}
+		myFun();		
+	</pre>
+
+	<script>
+
+		function myFun(){
+			var html = document.querySelector('html');
+
+		//1.创建块元素
+			var Box = document.createElement('div');
+			//setAttribute为box添加属性
+			Box.setAttribute('class','box');
+			html.appendChild(Box);
+			Box.textContent = 'box';
+		//2.创建p元素
+			var prep = document.createElement('p');
+			prep.textContent = '你好';
+			html.appendChild(prep);
+		//3.创建button
+			var btn = document.createElement('button');
+			btn.textContent = 'x';
+			html.appendChild(btn);
+
+		//点击事件parentNode.removeChild
+			btn.onclick = function(){
+				prep.parentNode.removeChild(prep);
+			}	
+
+		
+		}
+		myFun();
+		
+	//图片转换器
+	//getAttribute(属性)
+	//setAttribute（属性，属性值）
+	var Img = document.querySelector('img')
+	Img.onclick = function(){
+		var Src = Img.getAttribute('src');
+		if(Src === 'images/1.jpg'){
+			Img.setAttribute('src','images/2.jpg') ;
+		}else{
+			Img.setAttribute('src','images/1.jpg') ;
+		}
+	}
+	</script>
+</body>
+</html>
